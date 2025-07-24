@@ -1,0 +1,47 @@
+[
+  {
+    "report_name": "kyc_risk_summary",
+    "source": "finance.kyc_ml.customer_enriched",
+    "format": "delta",
+    "dimensions": ["type", "isFraud"],
+    "measures": ["F.avg('amount').alias('avg_amount')", "F.count('*').alias('txn_count')"],
+    "certify": true,
+    "notify": ["rajeevjha@aol.in"]
+  },
+  {
+    "report_name": "high_risk_customers",
+    "source": "finance.kyc_ml.customer_enriched",
+    "format": "delta",
+    "filters": "isFraud = 1",
+    "certify": false,
+    "notify": []
+  },
+  {
+    "report_name": "customer_type_counts",
+    "source": "finance.kyc_ml.customer_enriched",
+    "format": "delta",
+    "dimensions": ["type"],
+    "measures": ["F.count('*').alias('total_customers')"],
+    "certify": true,
+    "notify": []
+  },
+  {
+    "report_name": "fraud_amount_by_day",
+    "source": "finance.kyc_ml.customer_enriched",
+    "format": "delta",
+    "filters": "isFraud = 1",
+    "dimensions": ["date"],
+    "measures": ["F.sum('amount').alias('fraud_total')"],
+    "certify": false,
+    "notify": []
+  },
+  {
+    "report_name": "daily_transaction_summary",
+    "source": "finance.kyc_ml.customer_enriched",
+    "format": "delta",
+    "dimensions": ["date"],
+    "measures": ["F.count('*').alias('total_txns')", "F.sum('amount').alias('total_amount')"],
+    "certify": true,
+    "notify": ["audit_team@company.com"]
+  }
+]
