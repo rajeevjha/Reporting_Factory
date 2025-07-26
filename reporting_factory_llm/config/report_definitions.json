@@ -1,0 +1,14 @@
+[
+  {
+    "report_name": "fraud_by_account_type",
+    "prompt": "Summarize average fraud transaction amount by account type",
+    "report_type": "bar_chart",
+    "certify": true
+  },
+  {
+    "report_name": "daily_fraud_trend",
+    "prompt": "Show fraud transaction volume over time",
+    "report_type": "line_chart",
+    "certify": false
+  }
+]
