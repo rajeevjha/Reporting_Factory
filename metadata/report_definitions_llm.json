@@ -1,0 +1,12 @@
+[
+  {
+    "report_name": "fraud_by_account_type",
+    "natural_language": "Show average amount and total frauds by type where fraud happened"
+  },
+  {
+    "report_name": "high_risk_summary",
+    "dimensions": ["type"],
+    "measures": ["count(*) as txn_count", "sum(amount) as total_amt"],
+    "filters": "isFraud = 1"
+  }
+]
